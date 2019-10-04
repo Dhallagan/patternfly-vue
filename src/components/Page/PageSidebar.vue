@@ -1,7 +1,7 @@
 <template>
   <div class="pf-c-page__sidebar pf-m-dark">
     <div class="pf-c-page__sidebar-body">
-      pf-c-nav
+      <slot />
     </div>
   </div>
 </template>
@@ -10,7 +10,18 @@
 export default {
   name: 'PageHeader',
   props: {
-    msg: String
+    theme: {
+      type: String,
+      required: true,
+      validator (value) {
+        return ['dark', 'light'].includes(value)
+      }
+    },
+    navOpen:{
+      type: Boolean,
+      default: true
+    },
+    className: String
   }
 }
 </script>

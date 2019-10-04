@@ -32,7 +32,8 @@ export default {
     },
     toolbar:{
       type: Boolean
-    }
+    },
+    className: String
   },
   data () {
     return {

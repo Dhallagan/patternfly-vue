@@ -4,7 +4,7 @@
   <slot name="header" />
   <slot name="sidebar" />
 
-  <main role="main" class="pf-c-page__main" tabindex="-1">
+  <main role="main" :class="['pf-c-page__main',theme === 'dark' ? 'pf-m-dark' : 'pf-m-light']" tabindex="-1">
     <!-- <section class="pf-c-page__main-section pf-m-dark-100">
     </section>
     <section class="pf-c-page__main-section pf-m-dark-200">
