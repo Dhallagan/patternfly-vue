@@ -1,12 +1,11 @@
 <template>
   <header role="banner" class="pf-c-page__header">
-    <div class="pf-c-page__header-brand">
+    <!-- Show nav toggle or logo -->
+    <div v-if="showNavToggle || logo" class="pf-c-page__header-brand">
       <div class="pf-c-page__header-brand-toggle" v-if="showNavToggle">
-        {toggle}
+        <BarsIcon />
       </div>
-      <a class="pf-c-page__header-brand-link">
-        {{logo}}
-      </a>
+      <a class="pf-c-page__header-brand-link">{{logo}}</a>
     </div>
     <div class="pf-c-page__header-tools">
       <div>{Toolbar}</div>
@@ -16,8 +15,12 @@
 </template>
 
 <script>
+import BarsIcon from "../Icons/BarsIcon";
 export default {
-  name: 'PageHeader',
+  name: "PageHeader",
+  components: {
+    BarsIcon
+  },
   props: {
     showNavToggle: {
       type: Boolean,
@@ -30,15 +33,15 @@ export default {
     logo: {
       type: String
     },
-    toolbar:{
+    toolbar: {
       type: Boolean
     },
     className: String
   },
-  data () {
+  data() {
     return {
       isNavOpen: true
-    }
+    };
   }
-}
+};
 </script>
