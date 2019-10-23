@@ -12,8 +12,8 @@
       <a class="pf-c-page__header-brand-link">{{logo}}</a>
     </div>
     <div class="pf-c-page__header-tools">
-      <div>{Toolbar}</div>
-      <div>{Avatar}</div>
+      <div>{{toolbar}}</div>
+      <div>{{avatar}}</div>
     </div>
   </header>
 </template>
@@ -42,7 +42,10 @@ export default {
       type: String
     },
     toolbar: {
-      type: Boolean
+      type: [Boolean, String]
+    },
+    avatar: {
+      type: [Boolean, String]
     },
     className: String
   },

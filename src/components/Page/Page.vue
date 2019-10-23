@@ -2,23 +2,16 @@
   <div class="pf-c-page">
     <!-- SkipToContent -->
     <!-- <PageContextProvider> -->
-    <PageHeader :showNavToggle="true" :isNavOpen="isNavOpen" @onNavToggle="onNavToggle(isNavOpen)" />
 
-    <PageSidebar :theme="'dark'" :isNavOpen="isNavOpen">
-      <!-- <Nav>
-        <NavList>
-          <NavItem />
-          <NavItem />
-          <NavItem />
-        </NavList>
-      </Nav>-->
-    </PageSidebar>
+    <slot name="header" />
 
+    <slot name="sidebar" />
     <main
       role="main"
       :class="['pf-c-page__main',theme === 'dark' ? 'pf-m-dark' : 'pf-m-light']"
       tabindex="-1"
     >
+      <slot />
       <!-- <section class="pf-c-page__main-section pf-m-dark-100">
     </section>
     <section class="pf-c-page__main-section pf-m-dark-200">
@@ -34,8 +27,6 @@
 
 <script>
 // import PageContextProvider from "./PageContextProvider";
-import PageHeader from "./PageHeader";
-import PageSidebar from "./PageSidebar.vue";
 
 // import Nav from "./components/Nav/Nav.vue";
 // import NavList from "./components/Nav/NavList";
@@ -43,7 +34,6 @@ import PageSidebar from "./PageSidebar.vue";
 
 export default {
   name: "Page",
-  components: { PageHeader, PageSidebar },
   mounted() {
     window.addEventListener("resize", this.resize);
     this.handleResize();
@@ -70,9 +60,8 @@ export default {
     return {
       pageWidth: 1200,
       desktopIsNavOpen: this.managedSidebarOpen,
-      mobileIsNavOpen: false,
+      mobileIsNavOpen: false
       // mobileView: false
-      isNavOpen: true
     };
   },
   computed: {
@@ -91,9 +80,6 @@ export default {
     },
     onNavToggleMobile() {
       this.mobileIsNavOpen = !this.mobileIsNavOpen;
-    },
-    onNavToggle(val) {
-      this.isNavOpen = !val;
     }
   }
 };
