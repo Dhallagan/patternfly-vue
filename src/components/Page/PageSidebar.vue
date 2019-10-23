@@ -1,5 +1,8 @@
 <template>
-  <div class="pf-c-page__sidebar pf-m-dark">
+  <div
+    class="pf-c-page__sidebar pf-m-dark"
+    :class="[ isNavOpen ? 'pf-m-expanded' : 'pf-m-collapsed']"
+  >
     <div class="pf-c-page__sidebar-body">
       <Nav :theme="theme">
         <NavList>
@@ -32,7 +35,7 @@ export default {
         return ["dark", "light"].includes(prop);
       }
     },
-    navOpen: {
+    isNavOpen: {
       type: Boolean,
       default: true
     },

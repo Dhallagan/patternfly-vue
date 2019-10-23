@@ -2,7 +2,11 @@
   <header role="banner" class="pf-c-page__header">
     <!-- Show nav toggle or logo -->
     <div v-if="showNavToggle || logo" class="pf-c-page__header-brand">
-      <div class="pf-c-page__header-brand-toggle" v-if="showNavToggle">
+      <div
+        class="pf-c-page__header-brand-toggle"
+        v-if="showNavToggle"
+        @click="handleToggle(isNavOpen)"
+      >
         <BarsIcon />
       </div>
       <a class="pf-c-page__header-brand-link">{{logo}}</a>
@@ -30,6 +34,10 @@ export default {
       type: Boolean,
       default: true
     },
+    isNavOpen: {
+      type: Boolean,
+      default: true
+    },
     logo: {
       type: String
     },
@@ -38,10 +46,10 @@ export default {
     },
     className: String
   },
-  data() {
-    return {
-      isNavOpen: true
-    };
+  methods: {
+    handleToggle(val) {
+      this.$emit("onNavToggle", val);
+    }
   }
 };
 </script>

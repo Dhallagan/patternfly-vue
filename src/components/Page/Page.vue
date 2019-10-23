@@ -1,8 +1,10 @@
 <template>
   <div class="pf-c-page">
     <!-- SkipToContent -->
-    <PageHeader :showNavToggle="true" />
-    <PageSidebar :theme="'dark'">
+    <!-- <PageContextProvider> -->
+    <PageHeader :showNavToggle="true" :isNavOpen="isNavOpen" @onNavToggle="onNavToggle(isNavOpen)" />
+
+    <PageSidebar :theme="'dark'" :isNavOpen="isNavOpen">
       <!-- <Nav>
         <NavList>
           <NavItem />
@@ -26,10 +28,12 @@
     <section class="pf-c-page__main-section">
       </section>-->
     </main>
+    <!-- </PageContextProvider> -->
   </div>
 </template>
 
 <script>
+// import PageContextProvider from "./PageContextProvider";
 import PageHeader from "./PageHeader";
 import PageSidebar from "./PageSidebar.vue";
 
@@ -47,7 +51,11 @@ export default {
   destroyed() {
     window.removeEventListener("resize", this.resize);
   },
-
+  // provide() {
+  //   return {
+  //     isNavOpen: this.mobileView ? this.mobileIsNavOpen : this.desktopIsNavOpen
+  //   };
+  // },
   props: {
     isManagedSidebar: {
       type: Boolean,
@@ -61,15 +69,19 @@ export default {
   data() {
     return {
       pageWidth: 1200,
-      // desktopIsNavOpen: false;
+      desktopIsNavOpen: this.managedSidebarOpen,
       mobileIsNavOpen: false,
-      mobileView: false
+      // mobileView: false
+      isNavOpen: true
     };
   },
   computed: {
-    mobile() {
+    mobileView() {
       const breakPoint = 768;
       return this.pageWidth < breakPoint;
+    },
+    managedSidebarOpen() {
+      return !this.isManagedSidebar ? true : this.defaultManagedSidebarIsOpen;
     }
   },
   methods: {
@@ -79,6 +91,9 @@ export default {
     },
     onNavToggleMobile() {
       this.mobileIsNavOpen = !this.mobileIsNavOpen;
+    },
+    onNavToggle(val) {
+      this.isNavOpen = !val;
     }
   }
 };
