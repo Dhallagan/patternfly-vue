@@ -6,8 +6,7 @@
 
 <script>
 export default {
-  name: 'Nav',
-  props: {
-  }
-}
+  name: "NavList",
+  props: {}
+};
 </script>

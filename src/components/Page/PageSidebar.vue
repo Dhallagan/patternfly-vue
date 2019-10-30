@@ -4,29 +4,14 @@
     :class="[ isNavOpen ? 'pf-m-expanded' : 'pf-m-collapsed']"
   >
     <div class="pf-c-page__sidebar-body">
-      <Nav :theme="theme">
-        <NavList>
-          <NavItem />
-          <NavItem />
-          <NavItem />
-        </NavList>
-      </Nav>
+      <slot name="nav" />
     </div>
   </div>
 </template>
 
 <script>
-import Nav from "../Nav/Nav.vue";
-import NavList from "../Nav/NavList";
-import NavItem from "../Nav/NavItem";
-
 export default {
   name: "PageHeader",
-  components: {
-    Nav,
-    NavList,
-    NavItem
-  },
   props: {
     theme: {
       type: String,

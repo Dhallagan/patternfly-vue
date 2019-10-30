@@ -1,28 +1,44 @@
 <template>
-  <div id="app">
+  <div id="app" class="pf-m-redhat-font" style="height: 100vh;">
     <Page>
       <PageHeader
         slot="header"
         logo="Logo"
-        toolbar="Toolbar"
-        avatar=" | Avatar"
+        toolbar="Toolbar |"
+        avatar="| Avatar"
         :showNavToggle="true"
         :isNavOpen="isNavOpen"
         @onNavToggle="onNavToggle(isNavOpen)"
       />
 
       <PageSidebar slot="sidebar" :theme="'dark'" :isNavOpen="isNavOpen">
-        <!-- <Nav>
-        <NavList>
-          <NavItem />
-          <NavItem />
-          <NavItem />
-        </NavList>
-        </Nav>-->
+        <Nav slot="nav" :theme="'dark'">
+          <NavList>
+            <NavItem>System Panel</NavItem>
+            <NavItem>Policy</NavItem>
+
+            <NavItem>Authentication</NavItem>
+          </NavList>
+        </Nav>
+        <Nav slot="nav" :theme="'dark'">
+          <NavGroup :title="'Section1'">
+            <NavItem>System Panel</NavItem>
+            <NavItem>Policy</NavItem>
+            <NavItemSeperator />
+            <NavItem>Authentication</NavItem>
+          </NavGroup>
+        </Nav>
       </PageSidebar>
-      <PageSection :variant="'darker'">Section with darker background</PageSection>
-      <PageSection :variant="'dark'">Section with dark background</PageSection>
-      <PageSection :variant="'light'">Section with light background</PageSection>
+
+      <PageSection :variant="'light'">
+        <div class="pf-c-content">
+          <h1 data-pf-content="true" class>Main Title</h1>
+          <p data-pf-content="true" class>
+            Body text should be Overpass Regular at 16px. It should have leading of 24px because
+            <br />of it’s relative line height of 1.5.
+          </p>
+        </div>
+      </PageSection>
       <PageSection>Section with default background</PageSection>
     </Page>
   </div>
@@ -33,6 +49,11 @@ import Page from "./components/Page/Page.vue";
 import PageHeader from "./components/Page/PageHeader";
 import PageSidebar from "./components/Page/PageSidebar.vue";
 import PageSection from "./components/Page/PageSection.vue";
+import Nav from "./components/Nav/Nav.vue";
+import NavList from "./components/Nav/NavList";
+import NavItem from "./components/Nav/NavItem";
+import NavItemSeperator from "./components/Nav/NavItemSeperator";
+import NavGroup from "./components/Nav/NavGroup";
 
 export default {
   name: "app",
@@ -40,7 +61,12 @@ export default {
     Page,
     PageHeader,
     PageSidebar,
-    PageSection
+    PageSection,
+    Nav,
+    NavList,
+    NavItem,
+    NavItemSeperator,
+    NavGroup
   },
   data() {
     return {
