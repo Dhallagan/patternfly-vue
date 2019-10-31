@@ -28,6 +28,16 @@
             <NavItem>Authentication</NavItem>
           </NavGroup>
         </Nav>
+
+        <Nav slot="nav" :theme="'dark'">
+          <NavExpandable :title="'Section2'">
+            <NavList>
+              <NavItem>System Panel</NavItem>
+              <NavItem>Policy</NavItem>
+              <NavItem>Authentication</NavItem>
+            </NavList>
+          </NavExpandable>
+        </Nav>
       </PageSidebar>
 
       <PageSection :variant="'light'">
@@ -54,6 +64,7 @@ import NavList from "./components/Nav/NavList";
 import NavItem from "./components/Nav/NavItem";
 import NavItemSeperator from "./components/Nav/NavItemSeperator";
 import NavGroup from "./components/Nav/NavGroup";
+import NavExpandable from "./components/Nav/NavExpandable";
 
 export default {
   name: "app",
@@ -66,7 +77,8 @@ export default {
     NavList,
     NavItem,
     NavItemSeperator,
-    NavGroup
+    NavGroup,
+    NavExpandable
   },
   data() {
     return {
